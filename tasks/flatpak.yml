@@ -1,0 +1,36 @@
+- dnf:
+    name:
+      - flatpak
+  name: install flatpak
+- become: false
+  community.general.flatpak_remote:
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+    name: flathub
+    state: present
+  name: add flathub repo
+- become: false
+  community.general.flatpak:
+    method: user
+    name:
+      - com.github.GradienceTeam.Gradience
+      - com.github.IsmaelMartinez.teams_for_linux
+      - com.github.ahrm.sioyek
+      - com.github.marinm.songrec
+      - com.github.qarmin.czkawka
+      - com.github.tchx84.Flatseal
+      - com.makemkv.MakeMKV
+      - io.github.Foldex.AdwSteamGtk
+      - net.davidotek.pupgui2
+      - network.loki.Session
+      - org.cockpit_project.CockpitClient
+      - org.ferdium.Ferdium
+      - org.gtk.Gtk3theme.adw-gtk3-dark
+      - org.kde.digikam
+      - org.kde.krita
+      - org.pipewire.Helvum
+      - org.signal.Signal
+      - org.yuzu_emu.yuzu
+      - org.zotero.Zotero
+    state: present
+  name: install flatpaks

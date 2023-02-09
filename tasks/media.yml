@@ -1,0 +1,27 @@
+- dnf:
+    name:
+      - ashuffle
+      - mpc
+      - mpd
+      - mpdris2
+      - ncmpcpp
+  name: install audio playback
+- dnf:
+    name:
+      - mpv
+      - mpv-mpris
+      - python3-vapoursynth
+      - vapoursynth-tools
+      - vlc-core
+  name: install video playback
+- dnf:
+    name:
+      - pavucontrol
+      - playerctl
+  name: controll audio
+- dnf:
+    name:
+      - exif
+      - mediainfo
+      - perl-Image-ExifTool
+  name: file info

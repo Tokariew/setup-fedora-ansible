@@ -1,0 +1,13 @@
+- dnf:
+    name:
+      - gamehub
+      - gamescope
+      - goverlay
+      - heroic-games-launcher-bin
+      - legendary
+      - lutris
+      - mangohud
+      - prismlauncher
+      - protontricks
+      - steam
+  name: install gaming

@@ -1,0 +1,33 @@
+---
+- loop:
+    - https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020
+    - https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020
+  name: import rpmfusion keys
+  rpm_key:
+    key: '{{ item }}'
+    state: present
+- dnf:
+    name:
+      - 'https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version
+        }}.noarch.rpm'
+      - 'https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{
+        ansible_distribution_major_version }}.noarch.rpm'
+  name: install rpmfusion
+- community.general.copr:
+    name: '{{ item }}'
+    state: enabled
+  loop:
+    - tokariew/ashuffle
+    - tokariew/glow
+    - tokariew/i3lock-color
+    - tokariew/ueberzug
+    - cimbali/pympress
+    - atim/heroic-games-launcher
+    - atim/lazygit
+    - atim/starship
+    - flatcap/neomutt
+    - g3tchoo/prismlauncher
+    - iucar/cran
+    - kwizart/fedy
+    - skidnik/clipmenu
+  name: enable my coprs repos

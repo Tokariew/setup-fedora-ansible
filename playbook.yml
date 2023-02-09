@@ -1,0 +1,37 @@
+- become: true
+  hosts: all
+  tasks:
+    - import_tasks: tasks/enablerepos.yml
+      tags:
+        - enablerepos
+    - import_tasks: tasks/installbasics.yml
+      tags:
+        - installbasics
+    - name: enable sddm
+      service:
+        enabled: true
+        name: sddm
+    - file:
+        path: /etc/systemd/system/default.target
+        src: /usr/lib/systemd/system/graphical.target
+        state: link
+      name: enable graphical target
+    - become: false
+      copy:
+        dest: ~/.xsession
+        mode: 0750
+        src: files/.xsession
+      name: deploy xsession file
+    - import_tasks: tasks/flatpak.yml
+      tags:
+        - installflatpaks
+    - dnf:
+        name:
+          - glow
+          - i3lock-color
+          - ueberzug
+        state: present
+      name: install my own packages
+    - import_tasks: tasks/gaming.yml
+    - import_tasks: tasks/mail.yml
+    - import_tasks: tasks/media.yml

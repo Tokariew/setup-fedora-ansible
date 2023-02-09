@@ -1,0 +1,68 @@
+- dnf:
+    name:
+      - sddm-x11
+      - xorg-x11-fonts-misc
+      - xorg-x11-server-Xorg
+      - xorg-x11-xinit-session
+  name: install Xorg
+- dnf:
+    name:
+      - gdk-pixbuf2
+      - pango
+      - python3-cairocffi
+      - python3-cffi
+      - python3-pip
+      - python3-xcffib
+  name: install dependencies for qtile
+- become: false
+  name: install qtile
+  pip:
+    name: qtile
+    state: latest
+- dnf:
+    name:
+      - dunst
+      - feh
+      - firefox
+      - maim
+      - picom
+      - rofi
+      - tabbed
+      - trash-cli
+  name: install media stuff
+- dnf:
+    name:
+      - kitty
+      - xterm
+  name: install terminals
+- dnf:
+    name:
+      - exa
+      - fd-find
+      - fish
+      - fzf
+      - glances
+      - grc
+      - htop
+      - neovim
+      - pv
+      - ranger
+      - rclone
+      - ripgrep
+      - rsync
+      - starship
+  name: install terminal tools
+- dnf:
+    name:
+      - btrfs-progs
+      - compsize
+      - cryptsetup
+      - diskonaut
+      - duf
+      - duperemove
+      - exfatprogs
+      - gparted
+      - ntfsprogs
+      - simple-mtpfs
+      - snapper
+  name: install filesystem tools

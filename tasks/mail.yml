@@ -1,0 +1,13 @@
+- name: install mail/calendar/contact
+  dnf:
+    name:
+      - isync
+      - khal
+      - khard
+      - lynx
+      - mpop
+      - msmtp
+      - neomutt
+      - notmuch
+      - pass
+      - vdirsyncer
